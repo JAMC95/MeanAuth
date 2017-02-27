@@ -9,11 +9,14 @@ const app = express()
 
 const user = require('./routes/users')
 
-//Port Number
+// Port Number
 const port = 3000;
 
-//CORS Middleware
+// CORS Middleware
 app.use(cors())
+
+// Set Static Folder
+app.use(express.static(path.join(__dirname, 'public')))
 
 // Body Parser Middleware
 app.use(bodyParser.json())

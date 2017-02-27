@@ -6,8 +6,13 @@ const passport = require('passport')
 const mongoose = require('mongoose')
 const config = require('./config/database')
 
+// Connect to Database
 mongoose.connect(config.database)
 
+// On connection
+mongoose.connection.on('connected', () => {
+    console.log('Connected to database '+config.database)
+})
 const app = express()
 
 const user = require('./routes/users')

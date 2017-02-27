@@ -13,6 +13,12 @@ mongoose.connect(config.database)
 mongoose.connection.on('connected', () => {
     console.log('Connected to database '+config.database)
 })
+
+// On error
+mongoose.connection.on('error', (err) => {
+    console.log('Connected to database failed '+err)
+})
+
 const app = express()
 
 const user = require('./routes/users')

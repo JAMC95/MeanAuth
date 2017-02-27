@@ -19,5 +19,8 @@
     "passport-jwt": "*"
   },
   "author": "Jose Antonio Moral",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
 }

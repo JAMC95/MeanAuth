@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ValidateService} from '../../services/validate.service';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +12,7 @@ export class RegisterComponent implements OnInit {
   email: String;
   password: String;
 
-  constructor() { }
+  constructor(private ValidateService: ValidateService) { }
 
   ngOnInit() {
 
@@ -23,6 +24,17 @@ export class RegisterComponent implements OnInit {
       email: this.email,
       username: this.username,
       password: this.password
+    }
+
+    // Required Field 
+    if(!this.ValidateService.validateRegister(user)) {
+      console.log('Please fill in all fields')
+      return false;
+    }
+    // Validate email
+    if(!this.ValidateService.validateEmail(user)) {
+      console.log('Please type a valid email')
+      return false;
     }
   }
 }
